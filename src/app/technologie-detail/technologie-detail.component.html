@@ -1,1 +1,30 @@
-<p>technologie-detail works!</p>
+<h1>Technologie erfassen</h1>
+<label for="name">Name <span>*</span>:</label><br>
+<input type="text" id="name" name="name" required><br><br>
+
+<label for="category">Kategorie <span>*</span>:</label><br>
+<select name="ring" id="ring" required>
+    <option value="Techniques">Techniques</option>
+    <option value="Tools">Tools</option>
+    <option value="Platforms">Platforms</option>
+    <option value="LanguagesFrameworks">Languages & Frameworks</option>
+</select><br><br>
+
+<label for="ring">Ring:</label><br>
+<select name="ring" id="ring">
+    <option value="NotDefined">Select Ring</option>
+    <option value="Assess">Assess</option>
+    <option value="Trial">Trial</option>
+    <option value="Adopt">Adopt</option>
+    <option value="Hold">Hold</option>
+</select><br><br>
+
+<label for="description">Beschreibung Technologie <span>*</span>:</label><br>
+<textarea id="description" name="description" rows="4" required></textarea><br><br>
+
+<label for="beschreibungEinordnung">Beschreibung der Einordnung:</label><br>
+<textarea id="beschreibungEinordnung" name="beschreibungEinordnung" rows="4"></textarea><br><br>
+
+<!--
+<button (click)="saveTechnologie()">Speichern</button>
+-->

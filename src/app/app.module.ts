@@ -3,6 +3,7 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TechnologieAdministrationModule } from './technologie-administration/technologie-administration.module';
+import { TechnologieDetailModule } from './technologie-detail/technologie-detail.module';
 
 @NgModule({
     declarations: [
@@ -11,7 +12,8 @@ import { TechnologieAdministrationModule } from './technologie-administration/te
     imports: [
         BrowserModule,
         AppRoutingModule,
-        TechnologieAdministrationModule
+        TechnologieAdministrationModule,
+        TechnologieDetailModule
     ],
     providers: [
         provideClientHydration()

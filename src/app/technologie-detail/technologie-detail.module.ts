@@ -5,11 +5,14 @@ import { TechnologieDetailComponent } from './technologie-detail.component';
 
 
 @NgModule({
-  declarations: [
-    TechnologieDetailComponent
-  ],
-  imports: [
-    CommonModule
-  ]
+    declarations: [
+        TechnologieDetailComponent
+    ],
+    imports: [
+        CommonModule
+    ],
+    exports: [
+        TechnologieDetailComponent
+    ]
 })
 export class TechnologieDetailModule { }
