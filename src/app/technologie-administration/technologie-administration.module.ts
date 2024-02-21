@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TechnologieAdministrationComponent } from './technologie-administration.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [
         TechnologieAdministrationComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        RouterModule
     ],
     exports: [
         TechnologieAdministrationComponent

@@ -1,2 +1,31 @@
 <h1>Technologie Administration</h1>
-<p>Technologie Tabelle</p>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Kategorie</th>
+            <th>Ring</th>
+            <th>Beschreibung (Technologie)</th>
+            <th>Beschreibung (Einordnung)</th>
+            <th>Publiziert</th>
+            <th>Publikationsdatum (Einordnung)</th>
+            <th>Bearbeiten</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let technologie of technologien">
+            <td>{{ technologie.id }}</td>
+            <td>{{ technologie.name }}</td>
+            <td>{{ technologie.kategorie }}</td>
+            <td>{{ technologie.ring }}</td>
+            <td>{{ technologie.beschreibungTechnologie }}</td>
+            <td>{{ technologie.beschreibungEinordnung }}</td>
+            <td>{{ technologie.publiziert }}</td>
+            <td>{{ technologie.publikationsDatum }}</td>
+            <td><a routerLink="{{ technologie.id }}">bearbeiten</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<button routerLink="{{ 0 }}">neue Technologie erfassen</button>

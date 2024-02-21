@@ -1,30 +1,31 @@
 <h1>Technologie erfassen</h1>
-<label for="name">Name <span>*</span>:</label><br>
-<input type="text" id="name" name="name" required><br><br>
+<!-- TODO-sven: titel je nach Modus anzeigen -->
+<form *ngIf="technologie">
+    <label for="name">Name <span>*</span>:</label><br>
+    <input type="text" id="name" name="name" required [(ngModel)]="technologie.name"><br><br>
 
-<label for="category">Kategorie <span>*</span>:</label><br>
-<select name="ring" id="ring" required>
-    <option value="Techniques">Techniques</option>
-    <option value="Tools">Tools</option>
-    <option value="Platforms">Platforms</option>
-    <option value="LanguagesFrameworks">Languages & Frameworks</option>
-</select><br><br>
+    <label for="kategorie">Kategorie <span>*</span>:</label><br>
+    <select name="kategorie" id="kategorie" required [(ngModel)]="technologie.kategorie">
+        <option [value]="0">Techniques</option>
+        <option [value]="1">Tools</option>
+        <option [value]="2">Platforms</option>
+        <option [value]="3">Languages & Frameworks</option>
+    </select><br><br>
 
-<label for="ring">Ring:</label><br>
-<select name="ring" id="ring">
-    <option value="NotDefined">Select Ring</option>
-    <option value="Assess">Assess</option>
-    <option value="Trial">Trial</option>
-    <option value="Adopt">Adopt</option>
-    <option value="Hold">Hold</option>
-</select><br><br>
+    <label for="ring">Ring:</label><br>
+    <select name="ring" id="ring" [(ngModel)]="technologie.ring">
+        <option [value]="0">Select Ring</option>
+        <option [value]="1">Assess</option>
+        <option [value]="2">Trial</option>
+        <option [value]="3">Adopt</option>
+        <option [value]="4">Hold</option>
+    </select><br><br>
 
-<label for="description">Beschreibung Technologie <span>*</span>:</label><br>
-<textarea id="description" name="description" rows="4" required></textarea><br><br>
+    <label for="beschreibungTechnologie">Beschreibung Technologie <span>*</span>:</label><br>
+    <textarea id="beschreibungTechnologie" name="beschreibungTechnologie" rows="4" required [(ngModel)]="technologie.beschreibungTechnologie"></textarea><br><br>
 
-<label for="beschreibungEinordnung">Beschreibung der Einordnung:</label><br>
-<textarea id="beschreibungEinordnung" name="beschreibungEinordnung" rows="4"></textarea><br><br>
+    <label for="beschreibungEinordnung">Beschreibung der Einordnung:</label><br>
+    <textarea id="beschreibungEinordnung" name="beschreibungEinordnung" rows="4" [(ngModel)]="technologie.beschreibungEinordnung"></textarea><br><br>
 
-<!--
-<button (click)="saveTechnologie()">Speichern</button>
--->
+    <button (click)="saveTechnologie()">Speichern</button>
+</form>

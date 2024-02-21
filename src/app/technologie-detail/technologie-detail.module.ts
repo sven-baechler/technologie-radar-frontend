@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TechnologieDetailComponent } from './technologie-detail.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -9,7 +10,9 @@ import { TechnologieDetailComponent } from './technologie-detail.component';
         TechnologieDetailComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     exports: [
         TechnologieDetailComponent

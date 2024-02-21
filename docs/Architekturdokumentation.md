@@ -3,6 +3,9 @@ Autor: Sven Bächler
 
 arc42
 
+## TODO
+* Beschreiben, warum keine Standalone Komponenten verwendet wurden.
+
 ## Notes
 Wir empfehlen die Architekturdokumentation nach arc42 (https://www.arc42.de/overview/) zu strukturieren. Insbesondere den Kapitel 4 - 10 sollten dabei Beachtung geschenkt werden. Versuchen Sie sich kurz und prägnant zu halten.
 
