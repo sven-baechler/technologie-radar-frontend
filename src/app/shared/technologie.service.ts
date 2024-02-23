@@ -19,32 +19,36 @@ export class TechnologieService {
     
     /** GET technologien from the server */
     getTechnologien(): Observable<Technologie[]> {
-        const url = 'localhost:3000/api/technologien';
-        return this.http.get<Technologie[]>(url).pipe(
-            tap((_) => this.log('fetched technologien')),
+        const url = 'http://localhost:3000/api/technologien';
+        return this.http.get<Technologie[]>(this.technologienUrl).pipe(
+            tap((result) => {
+                console.log(result);
+                this.log('fetched technologien')
+            }),
             catchError(this.handleError<Technologie[]>('getTechnologien', []))
         )
     }
 
     /** GET technologie by id. Will 404 if id not found */
     getTechnologie(id: number): Observable<Technologie> {
-        const url = `localhost:3000/api/technologien/${id}`
-        return this.http.get<Technologie>(url).pipe(
+        const url = `localhost:3000/api/technologien/${id}`;
+        const mockUrl = `${this.technologienUrl}/${id}`;
+        return this.http.get<Technologie>(mockUrl).pipe(
             tap((_) => this.log(`fetched hero id=${id}`)),
             catchError(this.handleError<Technologie>(`getTechnologie id=${id}`))
         )
     }
 
-    /** PUT: update the hero on the server */
-    updateTechnologie(technologie: Technologie): Observable<any> {
-        return this.http.put(this.technologienUrl, technologie, this.httpOptions).pipe(
+    /** PUT: update the technologie on the server */
+    updateTechnologie(technologie: Technologie): Observable<Technologie> {
+        return this.http.put<Technologie>(this.technologienUrl, technologie, this.httpOptions).pipe(
             tap(_ => this.log(`updated technologie id=${technologie.id}`)),
-            catchError(this.handleError<any>('updateTechnologie'))
+            catchError(this.handleError<Technologie>('updateTechnologie'))
         );
     }
 
-    /** POST: add a new hero to the server */
-    addTechnologie(technologie: Technologie | null): Observable<Technologie> {
+    /** POST: add a new technologie to the server */
+    addTechnologie(technologie: Technologie): Observable<Technologie> {
         // TODO-sven: id vergeben (backend?)
         return this.http.post<Technologie>(this.technologienUrl, technologie, this.httpOptions).pipe(
             tap((newTechnologie: Technologie) => this.log(`added technologie with id=${newTechnologie.id}`)),
@@ -58,7 +62,7 @@ export class TechnologieService {
             console.error(error); // log to console instead
 
             // TODO: better job of transforming error for user consumption
-            //this.log(${operation} failed: ${error.message});
+            this.log(`${operation} failed: ${error.message}`);
 
             // Let the app keep running by returning an empty result.
             return of(result as T);

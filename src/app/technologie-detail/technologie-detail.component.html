@@ -1,5 +1,121 @@
 <h1>Technologie erfassen</h1>
 <!-- TODO-sven: titel je nach Modus anzeigen -->
+<form name="form" (ngSubmit)="myForm.form.valid && onSubmit(myForm.form.value)" #myForm="ngForm" novalidate>
+    <div>
+        <label for="name-control">Name</label><br>
+        <input id="name-control"
+                type="text"
+                name="name"
+                class="form-control"
+                [(ngModel)]="technologie.name"
+                #name="ngModel"
+                [ngClass]="{ 'is-invalid': myForm.submitted && name.invalid }"
+                required
+        >
+        <div *ngIf="myForm.submitted && name.invalid" class="invalid-feedback">
+            <div *ngIf="name.errors?.['required'] ?? false">Name is required</div>
+        </div>
+    </div>
+    <br>
+    <div>
+        <label for="kategorie-control">Kategorie</label><br>
+        <select id="kategorie-control"
+                name="kategorie"
+                id="kategorie"
+                class="form-control"
+                [(ngModel)]="technologie.kategorie"
+                #kategorie="ngModel"
+            [ngClass]="{ 'is-invalid': myForm.submitted && kategorie.invalid }"
+            required
+        >
+            <option [value]="0">Techniques</option>
+            <option [value]="1">Tools</option>
+            <option [value]="2">Platforms</option>
+            <option [value]="3">Languages & Frameworks</option>
+        </select>
+        <div *ngIf="myForm.submitted && kategorie.invalid" class="invalid-feedback">
+            <div *ngIf="kategorie.errors?.['required']">kategorie is required</div>
+        </div>
+    </div>
+    <br>
+    <div>
+        <label for="ring-control">Ring</label><br>
+        <select id="ring-control"
+                name="ring"
+                id="ring"
+                class="form-control"
+                [(ngModel)]="technologie.ring"
+                #ring="ngModel"
+            [ngClass]="{ 'is-invalid': myForm.submitted && ring.invalid }"
+            required
+        >
+            <option [value]="0">Select Ring</option>
+            <option [value]="1">Assess</option>
+            <option [value]="2">Trial</option>
+            <option [value]="3">Adopt</option>
+            <option [value]="4">Hold</option>
+        </select>
+        <div *ngIf="myForm.submitted && ring.invalid" class="invalid-feedback">
+            <div *ngIf="ring.errors?.['required']">ring is required</div>
+        </div>
+    </div>
+    <br>
+    <div>
+        <label for="beschreibungTechnologie-control">Name</label><br>
+        <input id="name-control"
+                type="text"
+                name="name"
+                class="form-control"
+                [(ngModel)]="technologie.name"
+                #name="ngModel"
+                [ngClass]="{ 'is-invalid': myForm.submitted && name.invalid }"
+                required
+        >
+        <div *ngIf="myForm.submitted && name.invalid" class="invalid-feedback">
+            <div *ngIf="name.errors?.['required'] ?? false">Name is required</div>
+        </div>
+    </div>
+    <br>
+    <div>
+        <label for="beschreibungTechnologie-control">Beschreibung Technologie</label><br>
+        <input id="beschreibungTechnologie-control"
+                type="text"
+                name="beschreibungTechnologie"
+                class="form-control"
+                [(ngModel)]="technologie.beschreibungTechnologie"
+                #beschreibungTechnologie="ngModel"
+                [ngClass]="{ 'is-invalid': myForm.submitted && beschreibungTechnologie.invalid }"
+                required
+        >
+        <div *ngIf="myForm.submitted && beschreibungTechnologie.invalid" class="invalid-feedback">
+            <div *ngIf="beschreibungTechnologie.errors?.['required'] ?? false">beschreibungTechnologie is required</div>
+        </div>
+    </div>
+    <br>
+    <div>
+        <label for="beschreibungEinordnung-control">Beschreibung Technologie</label><br>
+        <input id="beschreibungEinordnung-control"
+                type="text"
+                name="beschreibungEinordnung"
+                class="form-control"
+                [(ngModel)]="technologie.beschreibungEinordnung"
+                #beschreibungEinordnung="ngModel"
+                [ngClass]="{ 'is-invalid': myForm.submitted && beschreibungEinordnung.invalid }"
+                required
+        >
+        <div *ngIf="myForm.submitted && beschreibungEinordnung.invalid" class="invalid-feedback">
+            <div *ngIf="beschreibungEinordnung.errors?.['required'] ?? false">beschreibungEinordnung is required</div>
+        </div>
+    </div>
+    <br>
+    <div class="text-center">
+        <button>Speichern</button>
+    </div>
+    <br>
+</form>
+<button [routerLink]="['/administration']">zurück zur Übersicht</button>
+
+<!--
 <form *ngIf="technologie">
     <label for="name">Name <span>*</span>:</label><br>
     <input type="text" id="name" name="name" required [(ngModel)]="technologie.name"><br><br>
@@ -29,3 +145,4 @@
 
     <button (click)="saveTechnologie()">Speichern</button>
 </form>
+-->

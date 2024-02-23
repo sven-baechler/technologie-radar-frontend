@@ -23,9 +23,9 @@
             <td>{{ technologie.beschreibungEinordnung }}</td>
             <td>{{ technologie.publiziert }}</td>
             <td>{{ technologie.publikationsDatum }}</td>
-            <td><a routerLink="{{ technologie.id }}">bearbeiten</a></td>
+            <td><button [routerLink]="[technologie.id]">bearbeiten</button></td>
         </tr>
     </tbody>
 </table>
 
-<button routerLink="{{ 0 }}">neue Technologie erfassen</button>
+<button [routerLink]="['0']">neue Technologie erfassen</button>
