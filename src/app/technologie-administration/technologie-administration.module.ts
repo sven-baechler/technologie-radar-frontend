@@ -2,15 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TechnologieAdministrationComponent } from './technologie-administration.component';
 import { RouterModule } from '@angular/router';
-import { AppModule } from '../app.module';
+import { PipesModule } from '../shared/pipes/pipes.module';
 
 @NgModule({
     declarations: [
-        TechnologieAdministrationComponent
+        TechnologieAdministrationComponent,
     ],
     imports: [
         CommonModule,
-        RouterModule
+        RouterModule,
+        PipesModule
     ],
     exports: [
         TechnologieAdministrationComponent

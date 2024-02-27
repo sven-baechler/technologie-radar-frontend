@@ -10,23 +10,19 @@
             <th>Beschreibung (Technologie)</th>
             <th>Beschreibung (Einordnung)</th>
             <th>Publiziert</th>
-            <th>Publikationsdatum (Einordnung)</th>
-            <th>Bearbeiten</th>
+            <th>Publikationsdatum</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let technologie of technologien">
             <td>{{ technologie.id }}</td>
             <td>{{ technologie.name }}</td>
-            <!--
             <td>{{ technologie.kategorie | kategorieToBezeichnung }}</td>
-            -->
-            <td>{{ technologie.kategorie }}</td>
-            <td>{{ technologie.ring }}</td>
+            <td>{{ technologie.ring | ringToBezeichnung }}</td>
             <td>{{ technologie.beschreibungTechnologie }}</td>
             <td>{{ technologie.beschreibungEinordnung }}</td>
-            <td>{{ technologie.publiziert }}</td>
-            <td>{{ technologie.publikationsDatum }}</td>
+            <td>{{ technologie.publiziert | publiziertToBezeichnung }}</td>
+            <td>{{ technologie.publikationsDatum | formatDate }}</td>
             <td><button [routerLink]="[technologie.id]">bearbeiten</button></td>
         </tr>
     </tbody>

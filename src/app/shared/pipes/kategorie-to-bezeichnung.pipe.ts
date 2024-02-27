@@ -5,18 +5,17 @@ import { Kategorie } from '../enums/kategorie';
   name: 'kategorieToBezeichnung'
 })
 export class KategorieToBezeichnungPipe implements PipeTransform {
-
-  transform(kategorie: Kategorie): string {
-    switch (kategorie) {
-        case Kategorie.Techniques:
-            return 'Techniques';
-        case Kategorie.Tools:
-            return 'Tools';
-        case Kategorie.Platforms:
-            return 'Platforms';
-        case Kategorie.LanguagesFrameworks:
-        default:
-            return 'Languages & Frameworks';
+    transform(kategorie: Kategorie): string {
+        switch (kategorie) {
+            case Kategorie.Techniques:
+                return 'Techniques';
+            case Kategorie.Tools:
+                return 'Tools';
+            case Kategorie.Platforms:
+                return 'Platforms';
+            case Kategorie.LanguagesFrameworks:
+            default:
+                return 'Languages & Frameworks';
+        }
     }
-  }
 }

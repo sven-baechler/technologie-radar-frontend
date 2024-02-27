@@ -7,12 +7,10 @@ import { TechnologieDetailModule } from './technologie-detail/technologie-detail
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { TechnologieViewerModule } from './technologie-viewer/technologie-viewer.module';
-import { KategorieToBezeichnungPipe } from './shared/pipes/kategorie-to-bezeichnung.pipe';
 
 @NgModule({
     declarations: [
         AppComponent,
-        KategorieToBezeichnungPipe
     ],
     imports: [
         BrowserModule,
@@ -27,9 +25,6 @@ import { KategorieToBezeichnungPipe } from './shared/pipes/kategorie-to-bezeichn
             dataEncapsulation: false
         })
         */
-    ],
-    exports: [
-        KategorieToBezeichnungPipe
     ],
     providers: [
         provideClientHydration()
