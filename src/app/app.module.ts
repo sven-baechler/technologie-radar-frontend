@@ -9,6 +9,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './mock-api/in-memory-data.service';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { TechnologieViewerModule } from './technologie-viewer/technologie-viewer.module';
 
 @NgModule({
     declarations: [
@@ -21,6 +22,7 @@ import { RouterModule } from '@angular/router';
         RouterModule,
         TechnologieAdministrationModule,
         TechnologieDetailModule,
+        TechnologieViewerModule
         /*
         HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
             dataEncapsulation: false
