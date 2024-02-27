@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Technologie } from '../shared/models/technologie';
-import { TechnologieService } from '../shared/technologie.service';
+import { TechnologieService } from '../shared/services/technologie.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Kategorie } from '../shared/enums/kategorie';
 import { Ring } from '../shared/enums/ring';
@@ -11,7 +11,9 @@ import { Ring } from '../shared/enums/ring';
   styleUrl: './technologie-detail.component.css'
 })
 export class TechnologieDetailComponent {
-    submitted = false;
+    submitted: boolean = false;
+    initialRing: Ring = Ring.NotDefined;
+    initialBeschreibungEinordnung: string | null = null;
   
     public technologie: Technologie = {
         id: 0,
@@ -35,12 +37,19 @@ export class TechnologieDetailComponent {
         if (id !== 0) {
             this.technologieService.getTechnologie(id).subscribe((technologie) => {
                 this.technologie = technologie;
+                this.initialRing = technologie.ring;
+                this.initialBeschreibungEinordnung = technologie.beschreibungEinordnung;
             });
         }
     }
     
-    onSubmit(data: Technologie) {
+    onSubmit(data: any) {
         this.submitted = true;
+
+        if (this.beschreibungEinordnungNotSet() || this.beschreibungEinordnungNotEdited() || this.ringNotSet()) {
+            return;
+        }
+
         if (this.technologie.id === 0) {
             this.technologieService.saveTechnologie(this.technologie).subscribe((insertId) => {
                 this.technologie.id = insertId;
@@ -48,16 +57,28 @@ export class TechnologieDetailComponent {
             });
         }
         else {
-            // TODO-sven: return wert von backend --> this.technologie anpassen
-            this.technologieService.saveTechnologie(this.technologie).subscribe((result) => {
-                // TODO-sven: gibt keinen insertId zurück --> ignorieren
-                console.log(result);
-            });
+            this.technologieService.saveTechnologie(this.technologie).subscribe();
 
             /*
             this.technologieService.updateTechnologie(this.technologie);
             console.log(this.technologie);
             */
         }
-    }    
+    }
+    
+    public beschreibungEinordnungNotSet() {
+        return this.technologie.publiziert && 
+            this.technologie.beschreibungEinordnung === '';
+    }
+
+    public beschreibungEinordnungNotEdited() {
+        return this.technologie.id !== 0 
+            && this.technologie.ring != this.initialRing 
+            && this.technologie.beschreibungEinordnung === this.initialBeschreibungEinordnung;
+    }
+
+    public ringNotSet() {
+        return this.technologie.publiziert 
+            && this.technologie.ring == Ring.NotDefined;
+    }
 }

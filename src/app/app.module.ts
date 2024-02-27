@@ -5,15 +5,14 @@ import { AppComponent } from './app.component';
 import { TechnologieAdministrationModule } from './technologie-administration/technologie-administration.module';
 import { TechnologieDetailModule } from './technologie-detail/technologie-detail.module';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './mock-api/in-memory-data.service';
-import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { TechnologieViewerModule } from './technologie-viewer/technologie-viewer.module';
+import { KategorieToBezeichnungPipe } from './shared/pipes/kategorie-to-bezeichnung.pipe';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        KategorieToBezeichnungPipe
     ],
     imports: [
         BrowserModule,
@@ -28,6 +27,9 @@ import { TechnologieViewerModule } from './technologie-viewer/technologie-viewer
             dataEncapsulation: false
         })
         */
+    ],
+    exports: [
+        KategorieToBezeichnungPipe
     ],
     providers: [
         provideClientHydration()

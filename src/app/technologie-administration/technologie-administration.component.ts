@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TechnologieService } from '../shared/technologie.service';
+import { TechnologieService } from '../shared/services/technologie.service';
 import { Technologie } from '../shared/models/technologie';
 
 @Component({
