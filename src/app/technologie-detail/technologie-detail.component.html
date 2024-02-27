@@ -1,5 +1,5 @@
-<h1>Technologie erfassen</h1>
-<!-- TODO-sven: titel je nach Modus anzeigen -->
+<h1 *ngIf="technologie.id === 0">neue Technologie erfassen</h1>
+<h1 *ngIf="technologie.id !== 0">Technologie bearbeiten</h1>
 <form name="technologieForm" (ngSubmit)="technologieForm.form.valid && onSubmit(technologieForm.form.value)" #technologieForm="ngForm" novalidate>
     <div>
         <label for="name-control">Name</label><br>

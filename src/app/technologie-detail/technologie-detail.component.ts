@@ -58,11 +58,6 @@ export class TechnologieDetailComponent {
         }
         else {
             this.technologieService.saveTechnologie(this.technologie).subscribe();
-
-            /*
-            this.technologieService.updateTechnologie(this.technologie);
-            console.log(this.technologie);
-            */
         }
     }
     
