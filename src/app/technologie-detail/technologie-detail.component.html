@@ -61,22 +61,6 @@
     </div>
     <br>
     <div>
-        <label for="beschreibungTechnologie-control">Name</label><br>
-        <input id="name-control"
-                type="text"
-                name="name"
-                class="form-control"
-                [(ngModel)]="technologie.name"
-                #name="ngModel"
-                [ngClass]="{ 'is-invalid': myForm.submitted && name.invalid }"
-                required
-        >
-        <div *ngIf="myForm.submitted && name.invalid" class="invalid-feedback">
-            <div *ngIf="name.errors?.['required'] ?? false">Name is required</div>
-        </div>
-    </div>
-    <br>
-    <div>
         <label for="beschreibungTechnologie-control">Beschreibung Technologie</label><br>
         <input id="beschreibungTechnologie-control"
                 type="text"
@@ -93,7 +77,7 @@
     </div>
     <br>
     <div>
-        <label for="beschreibungEinordnung-control">Beschreibung Technologie</label><br>
+        <label for="beschreibungEinordnung-control">Beschreibung Einordnung</label><br>
         <input id="beschreibungEinordnung-control"
                 type="text"
                 name="beschreibungEinordnung"
@@ -106,6 +90,10 @@
         <div *ngIf="myForm.submitted && beschreibungEinordnung.invalid" class="invalid-feedback">
             <div *ngIf="beschreibungEinordnung.errors?.['required'] ?? false">beschreibungEinordnung is required</div>
         </div>
+    </div>
+    <br>
+    <div *ngIf="technologie.id !== 0" class="text-center">
+        <button>Technologie publizieren</button>
     </div>
     <br>
     <div class="text-center">

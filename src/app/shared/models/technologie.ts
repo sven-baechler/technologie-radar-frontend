@@ -9,5 +9,5 @@ export interface Technologie {
     beschreibungTechnologie: string;
     beschreibungEinordnung: string | null;
     publiziert: boolean;
-    publikationsDatum: Date;
+    publikationsDatum: Date | null;
 }

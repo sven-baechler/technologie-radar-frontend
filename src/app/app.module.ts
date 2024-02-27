@@ -21,9 +21,11 @@ import { RouterModule } from '@angular/router';
         RouterModule,
         TechnologieAdministrationModule,
         TechnologieDetailModule,
+        /*
         HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
             dataEncapsulation: false
         })
+        */
     ],
     providers: [
         provideClientHydration()

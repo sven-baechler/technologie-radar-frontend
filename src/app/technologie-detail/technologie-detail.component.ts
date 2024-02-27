@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Technologie } from '../shared/models/technologie';
 import { TechnologieService } from '../shared/technologie.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Kategorie } from '../shared/enums/kategorie';
 import { Ring } from '../shared/enums/ring';
 
@@ -21,47 +21,43 @@ export class TechnologieDetailComponent {
         beschreibungTechnologie: '',
         beschreibungEinordnung: null,
         publiziert: false,
-        publikationsDatum: new Date()
+        publikationsDatum: null
     };
 
     constructor(
         private technologieService: TechnologieService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private router: Router
     ) {}
-
-    onSubmit(data: Technologie) {
-        this.submitted = true;
-        if (this.technologie.id === 0) {
-            this.technologieService.addTechnologie(this.technologie);
-            console.log(this.technologie);
-            /*
-            // TODO-sven: return added object from backend?
-            this.technologieService.addTechnologie(this.technologie).subscribe((technologie) => {
-                this.technologie = technologie;
-                console.log(this.technologie);
-            });
-            */
-        }
-        else {
-            this.technologieService.updateTechnologie(this.technologie);
-            console.log(this.technologie);
-            /*
-            // TODO-sven: return added object from backend?
-            this.technologieService.updateTechnologie(this.technologie).subscribe((technologie) => {
-                this.technologie = technologie;
-                console.log(this.technologie);
-            });
-            */
-        }
-    }    
-
+    
     ngOnInit(): void {
         const id = Number(this.route.snapshot.paramMap.get('id'));
         if (id !== 0) {
             this.technologieService.getTechnologie(id).subscribe((technologie) => {
                 this.technologie = technologie;
-                console.log(this.technologie);
             });
         }
     }
+    
+    onSubmit(data: Technologie) {
+        this.submitted = true;
+        if (this.technologie.id === 0) {
+            this.technologieService.saveTechnologie(this.technologie).subscribe((insertId) => {
+                this.technologie.id = insertId;
+                this.router.navigateByUrl(`administration/${insertId}`);
+            });
+        }
+        else {
+            // TODO-sven: return wert von backend --> this.technologie anpassen
+            this.technologieService.saveTechnologie(this.technologie).subscribe((result) => {
+                // TODO-sven: gibt keinen insertId zurück --> ignorieren
+                console.log(result);
+            });
+
+            /*
+            this.technologieService.updateTechnologie(this.technologie);
+            console.log(this.technologie);
+            */
+        }
+    }    
 }
