@@ -46,8 +46,6 @@ export class TechnologieService {
 
     /** POST: save one technologie to the server (add new technologie + edit existing technologie) */
     saveTechnologie(technologie: Technologie): Observable<number> {
-        console.log("frontend-service: saveTechnologie: ", technologie);
-
         const saveTechnologieUrl = `${this.baseUrl}/saveTechnologie`;
         return this.http.post<number>(saveTechnologieUrl, technologie, this.httpOptions).pipe(
             tap((result: number) => {}),
