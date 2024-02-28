@@ -13,7 +13,7 @@
                 required
         >
         <div *ngIf="technologieForm.submitted && name.invalid" class="invalid-feedback">
-            <div *ngIf="name.errors?.['required'] ?? false">Name is required</div>
+            <div *ngIf="name.errors?.['required'] ?? false">Name muss ausgefüllt sein!</div>
         </div>
     </div>
     <br>
@@ -67,7 +67,7 @@
                 required
         ></textarea>
         <div *ngIf="technologieForm.submitted && beschreibungTechnologie.invalid" class="invalid-feedback">
-            <div *ngIf="beschreibungTechnologie.errors?.['required'] ?? false">beschreibungTechnologie is required</div>
+            <div *ngIf="beschreibungTechnologie.errors?.['required'] ?? false">Technologiebeschreibung muss ausgefüllt sein!</div>
         </div>
     </div>
     <br>
