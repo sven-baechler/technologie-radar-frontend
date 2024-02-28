@@ -1,1 +1,30 @@
-<p>technologie-viewer works!</p>
+<h1>Technologie Viewer</h1>
+<h3 *ngIf="publishedTechnologien.length === 0">noch keine Technologien publiziert</h3>
+<table *ngIf="publishedTechnologien.length !== 0">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Kategorie</th>
+            <th>Ring</th>
+            <th>Beschreibung (Technologie)</th>
+            <th>Beschreibung (Einordnung)</th>
+            <th>Publiziert</th>
+            <th>Publikationsdatum</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let publishedTechnologie of publishedTechnologien">
+            <td>{{ publishedTechnologie.id }}</td>
+            <td>{{ publishedTechnologie.name }}</td>
+            <td>{{ publishedTechnologie.kategorie | kategorieToBezeichnung }}</td>
+            <td>{{ publishedTechnologie.ring | ringToBezeichnung }}</td>
+            <td>{{ publishedTechnologie.beschreibungTechnologie }}</td>
+            <td>{{ publishedTechnologie.beschreibungEinordnung }}</td>
+            <td>{{ publishedTechnologie.publiziert | publiziertToBezeichnung }}</td>
+            <td>{{ publishedTechnologie.publikationsDatum | formatDate }}</td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<button [routerLink]="['/administration']">zur Administration</button>

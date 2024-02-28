@@ -8,7 +8,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class TechnologieService {
 
-    private technologienUrl = 'api/technologien' // URL to web api
     private baseUrl = 'http://localhost:3000/api';
     private httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -24,6 +23,15 @@ export class TechnologieService {
         return this.http.get<Technologie[]>(getTechnologienUrl).pipe(
             tap((result: Technologie[]) => {}),
             catchError(this.handleError<Technologie[]>('getTechnologien', []))
+        )
+    }
+
+    /** GET all published technologien */
+    getPublishedTechnologien(): Observable<Technologie[]> {
+        const getTechnologienUrl = `${this.baseUrl}/getPublishedTechnologien`;
+        return this.http.get<Technologie[]>(getTechnologienUrl).pipe(
+            tap((result: Technologie[]) => {}),
+            catchError(this.handleError<Technologie[]>('getPublishedTechnologien', []))
         )
     }
 
